@@ -1,0 +1,1 @@
+Lotto Simulator web app

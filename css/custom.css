@@ -1,0 +1,37 @@
+
+.custom-container {
+    margin-bottom: 10rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.custom-h1 {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.center-text {
+    text-align: center !important;
+}
+
+.jumbotron {
+    text-align: center !important;
+    width: fit-content !important;
+    height: fit-content !important;
+    align-self: center !important;
+    justify-self: center !important;
+    padding: 2rem 5rem !important;
+}
+
+h2 {
+    margin-bottom: 2rem;
+}
+
+.rolls-container {
+    margin-bottom: 4rem;
+}
+
+.buttons {
+    display: flex;
+    column-gap: 5px;
+}
