@@ -28,7 +28,13 @@ if ($_POST) {
 }
 ?>
 
-<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+<!-- hidden div for holding digit range data to be used in js -->
+<div class="d-none concealed-data" 
+    data-range-min=<?php echo Ticket::$digit_range['min'] ?> 
+    data-range-max=<?php echo Ticket::$digit_range['max'] ?>>
+</div>
+
+<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
     <div class="form-check">
         <input type="checkbox" class="form-check-input" id="chkbx-random-digits">
         <label class="form-check-label" for="chkbx-random-digits">Random digits</label>
