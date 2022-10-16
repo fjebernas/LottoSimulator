@@ -35,3 +35,13 @@ h2 {
     display: flex;
     column-gap: 5px;
 }
+
+/* some changes in bootstrap modal */
+.modal-body {
+    padding: 20px 20px 0px 20px !important;
+    text-align: center !important;
+}
+
+.modal-footer{
+    text-align: center !important;
+}

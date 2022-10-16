@@ -1,4 +1,6 @@
 <?php
+include_once "./objects/ticket.php";
+
 class LottoMachine {
     private $conn;
     private $roll_event_table_name = "Roll_Events";
@@ -54,7 +56,7 @@ class LottoMachine {
         $randomDigit = null;
 
         do {
-            $randomDigit = rand(1, 15);
+            $randomDigit = rand(Ticket::$digit_range['min'], Ticket::$digit_range['max']);
         } while ($this->isDigitAlreadyInTable($randomDigit));
 
         $query = "INSERT INTO 

@@ -29,66 +29,41 @@ if ($_POST) {
 ?>
 
 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="chkbx-random-digits">
+        <label class="form-check-label" for="chkbx-random-digits">Random digits</label>
+    </div>
     <div class="form-group">
         <label for="digit1">First digit:</label>
         <select name="first_digit" class="form-control" id="digit1">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-            <option>9</option>
-            <option>10</option>
-            <option>11</option>
-            <option>12</option>
-            <option>13</option>
-            <option>14</option>
-            <option>15</option>
+            <?php
+            for ($i=Ticket::$digit_range['min']; $i <= Ticket::$digit_range['max']; $i++) {
+                echo "<option>" . $i . "</option>";
+            }
+            ?>
         </select>
     </div>
     <div class="form-group">
-        <label for="digit2">First digit:</label>
+        <label for="digit2">Second digit:</label>
         <select name="second_digit" class="form-control" id="digit2">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-            <option>9</option>
-            <option>10</option>
-            <option>11</option>
-            <option>12</option>
-            <option>13</option>
-            <option>14</option>
-            <option>15</option>
+            <?php
+            for ($i=Ticket::$digit_range['min']; $i <= Ticket::$digit_range['max']; $i++) {
+                echo "<option>" . $i . "</option>";
+            }
+            ?>
         </select>
     </div>
     <div class="form-group">
-        <label for="digit3">First digit:</label>
+        <label for="digit3">Third digit:</label>
         <select name="third_digit" class="form-control" id="digit3">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-            <option>9</option>
-            <option>10</option>
-            <option>11</option>
-            <option>12</option>
-            <option>13</option>
-            <option>14</option>
-            <option>15</option>
+            <?php
+            for ($i=Ticket::$digit_range['min']; $i <= Ticket::$digit_range['max']; $i++) {
+                echo "<option>" . $i . "</option>";
+            }
+            ?>
         </select>
     </div>
-    <a href="./index.php" class="btn btn-danger">Cancel</a>
+    <a href="./prepare_tickets.php" class="btn btn-danger">Go back</a>
     <button type="submit" class="btn btn-success">Submit</button>
 </form>
 

@@ -18,10 +18,12 @@ include_once "layout_header.php";
 
 echo "<h1 class='custom-h1'>Its RNG time.</h1>";
 
+// create roll_event only once
 if (!isset($event_id)) {
     if ($lottoMachine->createRollEvent()) {
         $lottoMachine->setRollEventID();
 
+        //register tickets only once
         $stmt = $ticket->readAllValidTickets();
         if ($stmt->rowCount() > 0) {
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -54,9 +56,12 @@ if ($_POST) {
 
 <div class="jumbotron">
     <h1 class="display-4">
-        <?php 
-        echo isset($lottoMachine->rolled_digit) ? $lottoMachine->rolled_digit : "--";
-        ?>
+        <code>
+            <!-- rolled digit shows here -->
+            <?php 
+            echo isset($lottoMachine->rolled_digit) ? $lottoMachine->rolled_digit : "--";
+            ?>
+        </code>
     </h1>
     <p class="lead">Rolled number</p>
     <p class="lead">
@@ -78,6 +83,7 @@ if ($_POST) {
 </div>
 
 <?php
+// display ticket table
 echo "<h2>Your tickets:</h2 >";
 $ticket->roll_event_id = $lottoMachine->roll_event_id;
 $stmt = $ticket->readAllTicketsWithRollEventId();

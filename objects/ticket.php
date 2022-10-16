@@ -4,6 +4,8 @@ class Ticket {
     private $ticket_table_name = "Tickets";
     private $rolls_table_name = "Rolls";
 
+    public static $digit_range = array('min' => 1, 'max' => 20);
+
     public $ticket_id;
     public $first_digit;
     public $second_digit;
@@ -12,8 +14,6 @@ class Ticket {
     public $is_valid;
     public $matches;
     public $roll_event_id;
-
-    public $timestamp;
 
     public function __construct($conn)
     {
@@ -70,12 +70,12 @@ class Ticket {
         $this->third_digit = htmlspecialchars(strip_tags($this->third_digit));
 
         date_default_timezone_set('Asia/Manila');
-        $this->timestamp = date('Y-m-d H:i:s');
+        $this->created = date('Y-m-d H:i:s');
 
         $stmt->bindParam(":first_digit", $this->first_digit);
         $stmt->bindParam(":second_digit", $this->second_digit);
         $stmt->bindParam(":third_digit", $this->third_digit);
-        $stmt->bindParam(":created", $this->timestamp);
+        $stmt->bindParam(":created", $this->created);
 
         return $stmt->execute();
     }
@@ -99,13 +99,23 @@ class Ticket {
         return $stmt->execute();
     }
 
-    public function countAndSetMatches() {
-        $query = "SELECT first_digit, second_digit, third_digit FROM " . $this->ticket_table_name . " WHERE ticket_id=?";
+    public function countAndSetMatches($true = true) {
+        $query = "SELECT 
+                    first_digit, 
+                    second_digit, 
+                    third_digit 
+                FROM 
+                " . $this->ticket_table_name . " 
+                WHERE 
+                    ticket_id=:ticket_id 
+                AND 
+                    is_valid=:is_valid";
 
         $stmt = $this->conn->prepare($query);
         $this->ticket_id = htmlspecialchars(strip_tags($this->ticket_id));
 
-        $stmt->bindParam(1, $this->ticket_id);
+        $stmt->bindParam(":ticket_id", $this->ticket_id);
+        $stmt->bindParam(":is_valid", $true);
 
         try {
             $stmt->execute();

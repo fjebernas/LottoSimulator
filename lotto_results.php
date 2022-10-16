@@ -12,6 +12,7 @@ $ticket = new Ticket($db);
 $ticket->roll_event_id = $event_id;
 $stmt_tickets = $ticket->readAllTicketsWithRollEventId();
 
+// record the 'matches' in database and invalidate tickets
 if ($stmt_tickets->rowCount() > 0) {
     while ($row = $stmt_tickets->fetch(PDO::FETCH_ASSOC)) {
         $ticket->ticket_id = $row['ticket_id'];
@@ -32,6 +33,7 @@ echo "<h1 class='custom-h1'>Lotto results: </h1>";
 ?>
 
 <?php
+// display the rolled digits
 echo "<div class='rolls-container d-flex flex-row container'>";
 if ($stmt_rolls->rowCount() > 0) {
     while ($row = $stmt_rolls->fetch(PDO::FETCH_ASSOC)) {
@@ -48,6 +50,7 @@ echo "</div>";
 ?>
 
 <?php
+// display ticket table
 echo "<h2>Your tickets:</h2 >";
 $ticket->roll_event_id = $event_id;
 $stmt = $ticket->readAllTicketsWithRollEventId();

@@ -6,7 +6,7 @@
         <th scope="col" class="col-md-2">First digit</th>
         <th scope="col" class="col-md-2">Second digit</th>
         <th scope="col" class="col-md-2">Third digit</th>
-        <th scope="col" class="col-md-2">Roll event ID</th>
+        <th scope="col" class="col-md-1">Roll event ID</th>
         </tr>
     </thead>
     <tbody>
