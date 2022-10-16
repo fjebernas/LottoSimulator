@@ -1,0 +1,15 @@
+.custom-container {
+    margin-bottom: 10rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.custom-h1 {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+/* for tables */
+.center-text {
+    text-align: center !important;
+}
