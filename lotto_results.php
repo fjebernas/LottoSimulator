@@ -12,11 +12,11 @@ $ticket = new Ticket($db);
 $ticket->roll_event_id = $event_id;
 $stmt_tickets = $ticket->readAllTicketsWithRollEventId();
 
-// record the 'matches' in database and invalidate tickets
+// record the 'matched digits' in database and invalidate tickets
 if ($stmt_tickets->rowCount() > 0) {
     while ($row = $stmt_tickets->fetch(PDO::FETCH_ASSOC)) {
         $ticket->ticket_id = $row['ticket_id'];
-        $ticket->countAndSetMatches();
+        $ticket->countAndSetMatchedDigits();
         $ticket->invalidate();
     }
 }

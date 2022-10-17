@@ -16,6 +16,39 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `6_42_tickets`
+--
+
+DROP TABLE IF EXISTS `6_42_tickets`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `6_42_tickets` (
+  `ticket_id` int NOT NULL AUTO_INCREMENT,
+  `digit_1` int NOT NULL,
+  `digit_2` int NOT NULL,
+  `digit_3` int NOT NULL,
+  `digit_4` int NOT NULL,
+  `digit_5` int NOT NULL,
+  `digit_6` int NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `is_valid` bit(1) NOT NULL DEFAULT b'1',
+  `matched_digits` int DEFAULT NULL,
+  `roll_event_id` int DEFAULT NULL,
+  PRIMARY KEY (`ticket_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `6_42_tickets`
+--
+
+LOCK TABLES `6_42_tickets` WRITE;
+/*!40000 ALTER TABLE `6_42_tickets` DISABLE KEYS */;
+INSERT INTO `6_42_tickets` VALUES (1,8,24,29,1,29,14,'2022-10-17 15:45:02',_binary '\0',3,1),(2,2,16,8,15,13,31,'2022-10-17 15:45:03',_binary '\0',1,1),(3,1,21,41,21,38,34,'2022-10-17 15:45:04',_binary '\0',2,1),(4,42,28,6,14,18,32,'2022-10-17 15:45:06',_binary '\0',1,1),(5,23,28,3,30,26,22,'2022-10-17 15:45:07',_binary '\0',1,1),(6,28,33,20,26,39,30,'2022-10-17 15:53:23',_binary '\0',1,2),(7,36,35,15,22,33,16,'2022-10-17 15:53:24',_binary '\0',1,2),(8,27,23,28,17,15,15,'2022-10-17 15:53:25',_binary '\0',1,2),(9,30,25,7,3,4,30,'2022-10-17 15:53:26',_binary '\0',0,2),(10,18,34,13,40,12,22,'2022-10-17 15:59:39',_binary '\0',1,3),(11,4,34,22,26,38,30,'2022-10-17 15:59:42',_binary '\0',0,3),(12,42,9,27,10,9,17,'2022-10-17 15:59:45',_binary '\0',1,3),(13,29,2,27,5,40,41,'2022-10-17 15:59:48',_binary '\0',2,3),(14,14,20,41,36,29,12,'2022-10-17 15:59:53',_binary '\0',3,3),(15,32,12,27,16,36,25,'2022-10-17 15:59:57',_binary '\0',3,3);
+/*!40000 ALTER TABLE `6_42_tickets` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `roll_events`
 --
 
@@ -26,7 +59,7 @@ CREATE TABLE `roll_events` (
   `roll_event_id` int NOT NULL AUTO_INCREMENT,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`roll_event_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,7 +68,7 @@ CREATE TABLE `roll_events` (
 
 LOCK TABLES `roll_events` WRITE;
 /*!40000 ALTER TABLE `roll_events` DISABLE KEYS */;
-INSERT INTO `roll_events` VALUES (1,'2022-10-14 07:50:33'),(2,'2022-10-14 07:56:10'),(3,'2022-10-14 07:56:57'),(4,'2022-10-14 08:13:56'),(5,'2022-10-14 08:16:24'),(6,'2022-10-14 08:20:28');
+INSERT INTO `roll_events` VALUES (1,'2022-10-17 15:45:09'),(2,'2022-10-17 15:53:29'),(3,'2022-10-17 16:00:05');
 /*!40000 ALTER TABLE `roll_events` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -52,7 +85,7 @@ CREATE TABLE `rolls` (
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `roll_event_id` int NOT NULL,
   PRIMARY KEY (`roll_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -61,38 +94,8 @@ CREATE TABLE `rolls` (
 
 LOCK TABLES `rolls` WRITE;
 /*!40000 ALTER TABLE `rolls` DISABLE KEYS */;
-INSERT INTO `rolls` VALUES (1,9,'2022-10-14 07:50:51',1),(2,11,'2022-10-14 07:50:52',1),(3,10,'2022-10-14 07:50:53',1),(4,15,'2022-10-14 07:50:55',1),(5,13,'2022-10-14 07:50:56',1),(6,4,'2022-10-14 07:56:11',2),(7,7,'2022-10-14 07:56:11',2),(8,14,'2022-10-14 07:56:12',2),(9,12,'2022-10-14 07:56:12',2),(10,13,'2022-10-14 07:56:12',2),(11,11,'2022-10-14 07:56:58',3),(12,4,'2022-10-14 07:56:58',3),(13,7,'2022-10-14 07:56:59',3),(14,13,'2022-10-14 07:56:59',3),(15,2,'2022-10-14 07:56:59',3),(16,8,'2022-10-14 08:13:57',4),(17,15,'2022-10-14 08:13:57',4),(18,4,'2022-10-14 08:13:58',4),(19,6,'2022-10-14 08:13:58',4),(20,12,'2022-10-14 08:13:58',4),(21,15,'2022-10-14 08:16:25',5),(22,12,'2022-10-14 08:16:25',5),(23,9,'2022-10-14 08:16:26',5),(24,14,'2022-10-14 08:16:26',5),(25,3,'2022-10-14 08:16:26',5),(26,7,'2022-10-14 08:20:29',6),(27,2,'2022-10-14 08:20:29',6),(28,3,'2022-10-14 08:20:29',6),(29,15,'2022-10-14 08:20:30',6),(30,11,'2022-10-14 08:20:30',6);
+INSERT INTO `rolls` VALUES (1,29,'2022-10-17 15:45:10',1),(2,24,'2022-10-17 15:45:11',1),(3,31,'2022-10-17 15:45:11',1),(4,21,'2022-10-17 15:45:12',1),(5,28,'2022-10-17 15:45:12',1),(6,33,'2022-10-17 15:45:13',1),(7,16,'2022-10-17 15:53:29',2),(8,27,'2022-10-17 15:53:30',2),(9,20,'2022-10-17 15:53:30',2),(10,2,'2022-10-17 15:53:30',2),(11,1,'2022-10-17 15:53:31',2),(12,21,'2022-10-17 15:53:31',2),(13,18,'2022-10-17 16:00:08',3),(14,25,'2022-10-17 16:00:11',3),(15,41,'2022-10-17 16:00:12',3),(16,36,'2022-10-17 16:00:14',3),(17,20,'2022-10-17 16:00:16',3),(18,27,'2022-10-17 16:00:17',3);
 /*!40000 ALTER TABLE `rolls` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tickets`
---
-
-DROP TABLE IF EXISTS `tickets`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tickets` (
-  `ticket_id` int NOT NULL AUTO_INCREMENT,
-  `first_digit` int NOT NULL,
-  `second_digit` int NOT NULL,
-  `third_digit` int NOT NULL,
-  `created` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `is_valid` bit(1) NOT NULL DEFAULT b'1',
-  `matches` int DEFAULT NULL,
-  `roll_event_id` int DEFAULT NULL,
-  PRIMARY KEY (`ticket_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tickets`
---
-
-LOCK TABLES `tickets` WRITE;
-/*!40000 ALTER TABLE `tickets` DISABLE KEYS */;
-INSERT INTO `tickets` VALUES (1,3,6,12,'2022-10-14 07:50:13',_binary '\0',NULL,1),(2,7,6,9,'2022-10-14 07:56:06',_binary '\0',1,2),(3,6,7,11,'2022-10-14 07:56:42',_binary '\0',2,3),(4,1,2,3,'2022-10-14 07:56:45',_binary '\0',1,3),(5,14,3,6,'2022-10-14 07:56:49',_binary '\0',NULL,3),(6,6,4,8,'2022-10-14 08:13:43',_binary '\0',6,4),(7,4,7,12,'2022-10-14 08:13:45',_binary '\0',4,4),(8,1,2,3,'2022-10-14 08:13:49',_binary '\0',0,4),(9,15,10,3,'2022-10-14 08:13:53',_binary '\0',2,4),(10,6,8,7,'2022-10-14 08:20:20',_binary '\0',1,6);
-/*!40000 ALTER TABLE `tickets` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -104,4 +107,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-10-14 16:34:07
+-- Dump completed on 2022-10-18  0:03:14

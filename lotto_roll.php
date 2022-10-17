@@ -69,7 +69,7 @@ if ($_POST) {
             <input type="hidden" name="event_id" value="<?php echo $lottoMachine->roll_event_id; ?>">
             <input type="hidden" name="roll_counter" value="<?php echo $lottoMachine->roll_counter; ?>">
             <?php
-            if ($lottoMachine->roll_counter < 5) {
+            if ($lottoMachine->roll_counter < Ticket::$combination_count) {
                 echo "<button class='btn btn-primary btn-lg' type='submit'>Roll!</button>";
             } else {
                 echo "</form>";
